@@ -5,7 +5,10 @@ FROM golang:1.20
 WORKDIR /app
 
 # Copy the Go application source code into the container
-COPY main.go .
+COPY . .
+
+# Download go dependencies
+RUN go get -d -v ./...
 
 # Build the Go application
 RUN go build -o wildlife-preserve-app main.go
